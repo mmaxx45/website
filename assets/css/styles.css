@@ -48,7 +48,7 @@ body{
 .hero p{ margin:0; color:var(--muted); max-width:60ch; }
 
 /* Cards */
-.grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-top:1.25rem; }
+.grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-top:1.25rem; align-items: start; }
 .card{
     background:var(--card);
     padding:1rem;
@@ -61,9 +61,54 @@ body{
     border: 1px solid transparent; /* Basis für farbige Umrandung beim Hover */
 }
 
+/* Ensure hidden details can't overflow */
+.card{ overflow: hidden; position: relative; }
+
+.card-main{ cursor: pointer; }
+.card-main:focus{ outline: none; }
+.card-main:focus-visible{ outline: 3px solid rgba(37,99,235,0.12); outline-offset: 4px; }
+
+
+.card-extra{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .28s ease, padding .2s ease;
+    padding: 0 0 0 0;
+    color: var(--muted);
+}
+.card.is-open .card-extra{
+    padding-top: .6rem;
+    max-height: 420px; /* large enough for typical content */
+}
+
+/* GitHub icon link inside cards */
+.github-link{ color:var(--muted); display:inline-flex; align-items:center; }
+.github-link svg{ display:block; color:var(--muted); fill:currentColor; }
+.github-link:hover svg{ color:var(--accent); }
+/* Improve contrast for GitHub icon in dark mode */
+html.dark .github-link svg{ color: var(--fg); }
+
+/* Chevron in top-right of card */
+.chevron{
+    position: absolute; right:14px; top:14px; color:var(--muted);
+    display:inline-grid; place-items:center; pointer-events:none; transition: transform .22s ease, color .18s ease;
+}
+.card.is-open .chevron{ transform: rotate(180deg); color:var(--accent); }
+
+.expand-toggle{
+    margin-top: .6rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: .35rem .6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.expand-toggle:focus{ outline: 3px solid rgba(37,99,235,0.12); outline-offset: 3px; }
+
 /* Hover / Focus Effekt für Grid-Karten */
 .card:hover,
-.card:focus,
 .card:focus-within {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(2,6,23,0.12);
@@ -78,10 +123,14 @@ body{
 }
 
 /* Für Tastatur-Accessibility: sichtbare Umrandung (hoher Kontrast) */
-.card:focus {
+.card:focus-visible {
     outline: 3px solid rgba(37,99,235,0.14);
     outline-offset: 4px;
 }
+
+/* Links inside cards: no visible ring on mouse click, keep keyboard focus visible */
+.card a:focus{ outline: none; }
+.card a:focus-visible{ outline: 2px solid rgba(37,99,235,0.12); outline-offset: 3px; }
 
 /* Footer */
 .site-footer{ border-top:1px solid var(--border); padding:1.5rem 0; margin-top:2.5rem; color:var(--muted); display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
