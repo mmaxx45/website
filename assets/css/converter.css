@@ -1,0 +1,17 @@
+/* Styles for the Freedom Unit Converter */
+.converter{ padding:1rem; margin:1.5rem 0; }
+.converter h2{ margin:0 0 .5rem 0 }
+.converter .muted{ color:var(--muted) }
+.converter-row{ display:flex; gap:.6rem; align-items:center; margin-bottom:.6rem }
+.converter-row label{ min-width:120px; font-weight:600 }
+.converter-row input[type="number"], .converter-row select{ flex:1; padding:.45rem .6rem; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--fg) }
+.result-row #result{ font-weight:700; font-size:1.1rem }
+.hamburger-row{ flex-direction:column; align-items:flex-start }
+.hamburger-controls{ display:flex; gap:.6rem; align-items:center; margin-top:.4rem }
+.hamburger-controls input{ width:120px }
+
+@media (max-width:640px){
+  .converter-row{ flex-direction:column; align-items:stretch }
+  .converter-row label{ min-width:unset }
+  .hamburger-controls{ flex-direction:column; align-items:stretch }
+}
