@@ -3,20 +3,81 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html lang="de">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
+        <title>Dev Portfolio</title>
+        <meta name="description" content="Dev Portfolio mit Darkmode">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+
+        <!-- apply theme ASAP to avoid flashbang (runs before CSS loads) -->
+        <script>
+        (function(){
+            try {
+                const KEY = 'theme';
+                const s = localStorage.getItem(KEY);
+                if (s === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else if (s === 'light') {
+                    document.documentElement.classList.remove('dark');
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch(e) { /* ignore */ }
+        })();
+        </script>
+
+        <!-- ausgelagerte Styles -->
+        <link rel="stylesheet" href="assets/css/styles.css">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
-        <script src="" async defer></script>
+        <header class="site-header container">
+            <div>
+                <h1 class="logo">Mein Dev Portfolio</h1>
+                <div class="tagline">Backend • UI • Java</div>
+            </div>
+            <div>
+                <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle Dark Mode">
+                    <span class="icon" id="theme-icon">☀️</span>
+                    <span id="theme-text">Light</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="hero">
+                <div class="hero-left">
+                    <h2>Moin, ich bin Max und ich Programmiere in meiner Freizeit gerne👋🏼</h2>
+                    <p>Hier findest du ausgewählte Projekte, kurze Beschreibungen und Möglichkeiten zur Kontaktaufnahme.</p>
+                </div>
+                <div style="width:320px">
+                    <div class="card">
+                        <strong>Featured Project</strong>
+                        <p style="margin:.5rem 0 0 0; color:var(--muted)">Ein kurzes Projekt-Intro. Link, Tech-Stack und Demo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid">
+                <div class="card">Projekt A — Beschreibung</div>
+                <div class="card">Projekt B — Beschreibung</div>
+                <div class="card">Projekt C — Beschreibung</div>
+            </section>
+
+            <!-- ...existing code... -->
+        </main>
+
+        <footer class="site-footer container">
+            <div>© 2025 — Dev Portfolio</div>
+            <div class="contact">Kontakt: <a href="mailto:max@mlehrke.dev">max@mlehrke.dev</a></div>
+        </footer>
+
+        <!-- ausgelagerter Script -->
+        <script src="assets/js/script.js" defer></script>
     </body>
 </html>
