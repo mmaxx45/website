@@ -118,7 +118,7 @@
     const labels = {
       'm':'m','cm':'cm','in':'in','ft':'ft','yd':'yd','mi':'mi',
       'g':'g','kg':'kg','oz':'oz','lb':'lb','m1abrams':'M1 Abrams','burger':'Burger',
-  'l':'l','ml':'ml','floz':'fl oz','standard_dose':'Standarddose','pickup_bed':'Pickup Bed','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
+  'l':'l','ml':'ml','floz':'fl oz','standard_dose':'Bud Light Dose','pickup_bed':'Pickup Bed','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
       'c':'°C','f':'°F','carrier':'Aircraft Carrier','american_eagle':'American Eagle','football_field':'Football Field'
     };
     const label = labels[to] || to;
