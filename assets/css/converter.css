@@ -5,7 +5,9 @@
 .converter-row{ display:flex; gap:.6rem; align-items:center; margin-bottom:.6rem }
 .converter-row label{ min-width:120px; font-weight:600 }
 .converter-row input[type="number"], .converter-row select{ flex:1; padding:.45rem .6rem; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--fg) }
-.result-row #result{ font-weight:700; font-size:1.1rem }
+
+.result-row { display:flex; justify-content:space-between; align-items:center; font-size:1.1rem; }
+.result-row > #result{flex-grow: 1; font-weight:700; font-size:1.1rem }
 .hamburger-row{ display:none }
 .hamburger-controls{ display:flex; gap:.6rem; align-items:center; margin-top:.4rem }
 .hamburger-controls input{ width:120px }

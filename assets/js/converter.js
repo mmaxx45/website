@@ -176,4 +176,18 @@
       });
     }
   });
+  window.update = update
 })();
+
+function copyResultToInput() {
+  const resEl = document.getElementById('result');
+  const valueEl = document.getElementById('value');
+  if(!resEl || !valueEl) return;
+  
+  const num = parseFloat(resEl.textContent);
+  if(!isNaN(num)){
+    valueEl.value = num;
+    update();
+    }
+}
+
