@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Freedom Unit Converter</title>
     <meta name="description" content="Freedom Unit Converter — Inches, feet, yards, miles, oz, lb, fl oz, cups, gallons, °F etc." />
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/converter.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/converter.css">
   </head>
   <body>
     <header class="site-header container">
@@ -15,12 +15,12 @@
         <div class="tagline">Convert customary units — and split into hamburgers 🍔</div>
       </div>
       <div>
-        <a href="index.html" class="theme-toggle" aria-label="Zurück zur Übersicht">← Zurück</a>
+        <a href="../index.html" class="theme-toggle" aria-label="Zurück zur Übersicht">← Zurück</a>
       </div>
     </header>
 
     <main class="container">
-      <section class="converter card">
+      <section class="converter card no-hover">
         <h2>Converter</h2>
         <p class="muted">Wähle Kategorie, Einheit und gib einen Wert ein — Ergebnis wird sofort berechnet.</p>
 
@@ -52,23 +52,15 @@
         <div class="converter-row result-row">
           <div id="result">—</div>
         </div>
-
-        <div class="converter-row hamburger-row">
-          <label><input id="do-hamburger" type="checkbox"> In Hamburger aufteilen</label>
-          <div class="hamburger-controls">
-            <label for="burger-weight">Burger Gewicht (g)</label>
-            <input id="burger-weight" type="number" min="1" value="150">
-          </div>
-          <div id="burger-result" class="muted">&nbsp;</div>
-        </div>
       </section>
     </main>
 
     <footer class="site-footer container">
       <div>© 2025 — Freedom Converter</div>
-      <div class="contact">Back to: <a href="index.html">Portfolio</a></div>
+      <div class="contact">Back to: <a href="../index.html">Portfolio</a></div>
     </footer>
 
-    <script src="assets/js/converter.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/converter.js" defer></script>
   </body>
 </html>
