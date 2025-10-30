@@ -19,6 +19,10 @@
       l: 1,
       ml: 0.001,
       floz: 0.0295735295625, // US fl oz
+      // standard can (12 fl oz) ~ 355 ml
+      standard_dose: 0.355,
+      // pickup truck bed approx. volume (~1.7 m^3 = 1700 L)
+      pickup_bed: 1700,
       cup: 0.2365882365, // US cup
       pint: 0.473176473,
       quart: 0.946352946,
@@ -36,9 +40,9 @@
     // hardcoded special units
     if(category === 'mass'){
       // M1 Abrams mass ~ 61,000 kg
-      map['m1abrams'] = 61000000; // grams per M1 Abrams
+      map['m1abrams'] = 62000000; // grams per M1 Abrams
       // burger as mass (hardcoded)
-      map['burger'] = 150; // grams per burger (hardcoded)
+      map['burger'] = 200; // grams per burger
     }
     if(category === 'length'){
       // USS Nimitz-class length ~ 333 meters
@@ -48,7 +52,7 @@
       // American football field incl. end zones = 120 yards = 109.728 meters
       map['football_field'] = 109.728; // meters per football field
       // burger as length (hardcoded)
-      map['burger'] = 0.10; // meters per burger (10 cm hardcoded)
+      map['burger'] = 0.13; // meters per burger 
     }
     return map;
   }
@@ -57,8 +61,8 @@
     const display = {
       'm':'m','cm':'cm','in':'in','ft':'ft','yd':'yd','mi':'mi',
       'g':'g','kg':'kg','oz':'oz','lb':'lb','m1abrams':'M1 Abrams', 'burger':'Burger',
-      'l':'l','ml':'ml','floz':'fl oz','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
-      'c':'°C','f':'°F','carrier':'Aircraft Carrier','american_eagle':'American Eagle','football_field':'Football Field'
+  'l':'l','ml':'ml','floz':'fl oz','standard_dose':'Standarddose','pickup_bed':'Pickup Bed','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
+      'c':'°C','f':'°F','carrier':'Flugzeugträger','american_eagle':'American Eagle','football_field':'Football Feld'
     };
     const from = document.getElementById('from');
     const to = document.getElementById('to');
@@ -113,7 +117,7 @@
     const labels = {
       'm':'m','cm':'cm','in':'in','ft':'ft','yd':'yd','mi':'mi',
       'g':'g','kg':'kg','oz':'oz','lb':'lb','m1abrams':'M1 Abrams','burger':'Burger',
-      'l':'l','ml':'ml','floz':'fl oz','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
+  'l':'l','ml':'ml','floz':'fl oz','standard_dose':'Standarddose','pickup_bed':'Pickup Bed','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
       'c':'°C','f':'°F','carrier':'Aircraft Carrier','american_eagle':'American Eagle','football_field':'Football Field'
     };
     const label = labels[to] || to;
