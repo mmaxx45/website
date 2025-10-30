@@ -98,7 +98,7 @@
     if(baseFrom == null || baseTo == null) return NaN;
     const inBase = Number(value) * baseFrom; // value in base (m, g, l)
     const result = inBase / baseTo;
-    return result;
+    return Math.round(result*100)/100;
   }
 
   function format(n){
@@ -118,13 +118,12 @@
     const labels = {
       'm':'m','cm':'cm','in':'in','ft':'ft','yd':'yd','mi':'mi',
       'g':'g','kg':'kg','oz':'oz','lb':'lb','m1abrams':'M1 Abrams','burger':'Burger',
-  'l':'l','ml':'ml','floz':'fl oz','standard_dose':'Bud Light Dose/n','pickup_bed':'Pickup Bed/s','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
-      'c':'°C','f':'°F','carrier':'Flugzeugträger','american_eagle':'American Eagle/s','football_field':'Football Feld/er'
+      'l':'l','ml':'ml','floz':'fl oz','standard_dose':'Bud Light Dose','pickup_bed':'Pickup Bed','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
+      'c':'°C','f':'°F','carrier':'Flugzeugträger','american_eagle':'American Eagle','football_field':'Footballfeld'
     };
     const label = labels[to] || to;
     resEl.textContent = format(out) + (category === 'temperature' ? (' ' + label) : (' ' + label));
 
-    // no hamburger-split UI anymore; burger is available as a unit in selects
   }
 
   // wire up
@@ -140,5 +139,41 @@
     });
     // initial update
     update();
+
+    // --- Modal: show welcome popup on page open ---
+    const modal = document.getElementById('welcome-modal');
+    const modalOk = document.getElementById('modal-ok');
+    function showModal(){
+      if(!modal) return;
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('modal-open');
+      // focus ok button for accessibility
+      if(modalOk) modalOk.focus();
+    }
+    function hideModal(){
+      if(!modal) return;
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('modal-open');
+    }
+    if(modal){
+      // show modal immediately on load
+      showModal();
+      if(modalOk){
+        modalOk.addEventListener('click', hideModal);
+      }
+      // close with Escape
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false'){
+          hideModal();
+        }
+      });
+      // simple focus trap: keep focus inside modal while open
+      document.addEventListener('focusin', function(e){
+        if(modal.getAttribute('aria-hidden') === 'false' && !modal.contains(e.target)){
+          e.stopPropagation();
+          if(modalOk) modalOk.focus();
+        }
+      });
+    }
   });
 })();
