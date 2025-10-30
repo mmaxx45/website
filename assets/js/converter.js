@@ -98,7 +98,7 @@
     if(baseFrom == null || baseTo == null) return NaN;
     const inBase = Number(value) * baseFrom; // value in base (m, g, l)
     const result = inBase / baseTo;
-    return result;
+    return Math.round(result*100)/100;
   }
 
   function format(n){
@@ -124,7 +124,6 @@
     const label = labels[to] || to;
     resEl.textContent = format(out) + (category === 'temperature' ? (' ' + label) : (' ' + label));
 
-    // no hamburger-split UI anymore; burger is available as a unit in selects
   }
 
   // wire up
