@@ -18,3 +18,16 @@
   .converter-row label{ min-width:unset }
   .hamburger-controls{ flex-direction:column; align-items:stretch }
 }
+
+/* Modal overlay for welcome popup */
+.modal-overlay{
+  position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  background: rgba(2,6,23,0.55); z-index:1200; padding:1rem;
+}
+.modal-overlay[aria-hidden="true"]{ display:none; }
+.modal-content{ background:var(--card); color:var(--fg); padding:1.25rem; border-radius:12px; max-width:520px; width:100%; box-shadow:0 12px 40px rgba(2,6,23,0.5); border:1px solid var(--border); }
+.modal-content h3{ margin:0 0 .5rem 0 }
+.modal-content p{ margin:0 0 1rem 0; color:var(--muted) }
+.modal-actions{ display:flex; justify-content:flex-end }
+.modal-actions .btn{ padding:.5rem .8rem; border-radius:8px }
+body.modal-open{ overflow:hidden }
