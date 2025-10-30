@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Freedom Unit Converter</title>
+    <meta name="description" content="Freedom Unit Converter — Inches, feet, yards, miles, oz, lb, fl oz, cups, gallons, °F etc." />
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/converter.css">
+  </head>
+  <body>
+    <header class="site-header container">
+      <div>
+        <h1 class="logo">Freedom Unit Converter</h1>
+        <div class="tagline">Convert customary units — and split into hamburgers 🍔</div>
+      </div>
+      <div>
+        <a href="index.html" class="theme-toggle" aria-label="Zurück zur Übersicht">← Zurück</a>
+      </div>
+    </header>
+
+    <main class="container">
+  <section class="converter card no-hover">
+        <h2>Converter</h2>
+        <p class="muted">Wähle Kategorie, Einheit und gib einen Wert ein — Ergebnis wird sofort berechnet.</p>
+
+        <div class="converter-row">
+          <label for="category">Kategorie</label>
+          <select id="category">
+            <option value="length">Länge</option>
+            <option value="mass">Masse</option>
+            <option value="volume">Volumen</option>
+            <option value="temperature">Temperatur</option>
+          </select>
+        </div>
+
+        <div class="converter-row">
+          <label for="value">Wert</label>
+          <input id="value" type="number" step="any" value="1" />
+        </div>
+
+        <div class="converter-row">
+          <label for="from">Von</label>
+          <select id="from"></select>
+        </div>
+
+        <div class="converter-row">
+          <label for="to">Nach</label>
+          <select id="to"></select>
+        </div>
+
+        <div class="converter-row result-row">
+          <div id="result">—</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <div>© 2025 — Freedom Converter</div>
+      <div class="contact">Back to: <a href="index.html">Portfolio</a></div>
+    </footer>
+
+    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/converter.js" defer></script>
+  </body>
+</html>
