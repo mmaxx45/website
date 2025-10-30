@@ -1,69 +1,73 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<!doctype html>
 <html lang="de">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Portfolio — Hobbyentwickler</title>
-    <meta name="description" content="Ausgewählte Lernprojekte und Skills — kleines Portfolio eines Hobbyentwicklers.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/css/styles.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <header class="site-header container">
-            <div>
-                <h1 class="logo">Portfolio</h1>
-                <div class="tagline">Hobbyentwickler · Web & Backend</div>
-            </div>
-            <div>
-                <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle Dark Mode">
-                    <span class="icon" id="theme-icon">☀️</span>
-                    <span id="theme-text">Light</span>
-                </button>
-            </div>
-        </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Freedom Unit Converter</title>
+    <meta name="description" content="Freedom Unit Converter - Inches, feet, yards, miles, oz, lb, fl oz, cups, gallons, °F etc." />
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/converter.css">
+  </head>
+<header class="site-header container">
+    <div>
+        <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle Dark Mode">
+            <span class="icon" id="theme-icon">☀️</span>
+            <span id="theme-text">Light</span>
+        </button>
+    </div>
+</header>
+  <body>
+    <main class="container">
+      <section class="converter card no-hover">
+        <h2>Converter</h2>
+        <p class="muted">Wähle Kategorie, Einheit und gib einen Wert ein - Ergebnis wird sofort berechnet.</p>
+        <div class="converter-row">
+          <label for="category">Kategorie</label>
+          <select id="category">
+            <option value="length">Länge</option>
+            <option value="mass">Masse</option>
+            <option value="volume">Volumen</option>
+            <option value="temperature">Temperatur</option>
+          </select>
+        </div>
 
-        <main class="container">
-            <section class="hero">
-                <div class="hero-left">
-                    <h2>Hi - ich programmiere in meiner Freizeit.</h2>
-                    <p>Ich entwickle kleine Web- und Backend-Projekte, um meine Kenntnisse in Java, HTML/CSS und JavaScript zu vertiefen. Dieses Portfolio zeigt ausgewählte Projekte, was ich dabei gelernt habe und wie du mich erreichen kannst.</p>
-                </div>
-                <div style="width:320px">
-                    <div class="card">
-                        <strong>Aktuell: Freedom Unit Converter</strong>
-                        <p style="margin:.5rem 0 0 0; color:var(--muted)">Einheitenumrechner - aber in Freiheit, nicht in Metern.</p>
-                    </div>
-                </div>
-            </section>
+        <div class="converter-row">
+          <label for="value">Wert</label>
+          <input id="value" type="number" step="any" value="1" />
+        </div>
 
-            <section class="grid" id="projects">
-                <article class="card">
-                    <div class="card-main" role="button" tabindex="0" aria-expanded="false" aria-controls="details-project-freedom">
-                        <h3>Freedom Unit Converter</h3>
-                        <p>Der wahrscheinlich ungenaueste, aber freiheitsliebenste Einheitenumrechner im Internet. Rechnet Meter in Footballfelder, Kilogramm in Burger und alles andere in Pure freiheit.</p>
-                        <ul class="meta"><li>JavaScript</li><li>100% Amerikanisch</li></ul>
-                    </div>
-                    <div class="card-extra" id="details-project-freedom" aria-hidden="true">
-                        <p>Weil metrisch langweilig ist. Der Freedom Unit Converter erlaubt dir, echte Maßeinheiten wie M1 Abrams, American Eagles oder Bierdosen zu verwenden. Einfach umrechnen und wissen, wie viele Burger ein M1 Abrams wiegt.</p>
-                        <p><a href="freedom/" class="btn">Zum Freedom Unit Converter</a></p>
-                    </div>
-                </article>
-            </section>
-        </main>
+        <div class="converter-row">
+          <label for="from">Von</label>
+          <select id="from"></select>
+        </div>
 
-        <footer class="site-footer container">
-            <div>© 2025 — Dev Portfolio</div>
-            <div class="contact">Kontakt: <a href="mailto:max@mlehrke.dev">max@mlehrke.dev</a> · <a href="https://github.com/mmaxx45">GitHub — @mmaxx45</a></div>
-        </footer>
+        <div class="converter-row">
+          <label for="to">Nach</label>
+          <select id="to"></select>
+        </div>
 
-        <script src="assets/js/script.js" defer></script>
-    </body>
+        <div class="converter-row result-row">
+          <div id="result">-</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <div>© 2025 - Freedom Converter</div>
+    </footer>
+
+    <!-- Welcome modal -->
+    <div id="welcome-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title" aria-hidden="true">
+      <div class="modal-content">
+        <h3 id="welcome-title">Disclaimer</h3>
+        <p>Diese Einheiten sind frei erfunden, ungefähr richtig und völlig unnötig genau.</p>
+        <div class="modal-actions">
+          <button id="modal-ok" class="btn">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/script.js" defer></script>
+    <script src="./assets/js/converter.js" defer></script>
+  </body>
 </html>

@@ -17,7 +17,7 @@
         if(!btn) return;
         btn.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
         if(icon) icon.textContent = t === 'dark' ? '🌙' : '☀️';
-        if(text) text.textContent = t === 'dark' ? 'Dark' : 'Light';
+        if(text) text.textContent = t === 'dark' ? 'Dark' : 'Flashbang';
     }
 
     function apply(t){

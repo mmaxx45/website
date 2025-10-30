@@ -24,8 +24,6 @@ body{
 .container{ width:min(1100px,94%); margin:0 auto; }
 
 .site-header{ padding:1rem 0; display:flex; align-items:center; justify-content:space-between; }
-.logo{ font-weight:700; letter-spacing:-0.02em; margin:0; font-size:1.15rem; }
-.tagline{ color:var(--muted); font-size:0.9rem; margin-top:4px; }
 
 /* Toggle als Pill */
 .theme-toggle{
