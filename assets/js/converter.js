@@ -118,8 +118,8 @@
     const labels = {
       'm':'m','cm':'cm','in':'in','ft':'ft','yd':'yd','mi':'mi',
       'g':'g','kg':'kg','oz':'oz','lb':'lb','m1abrams':'M1 Abrams','burger':'Burger',
-  'l':'l','ml':'ml','floz':'fl oz','standard_dose':'Bud Light Dose','pickup_bed':'Pickup Bed','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
-      'c':'°C','f':'°F','carrier':'Aircraft Carrier','american_eagle':'American Eagle','football_field':'Football Field'
+  'l':'l','ml':'ml','floz':'fl oz','standard_dose':'Bud Light Dose/n','pickup_bed':'Pickup Bed/s','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
+      'c':'°C','f':'°F','carrier':'Flugzeugträger','american_eagle':'American Eagle/s','football_field':'Football Feld/er'
     };
     const label = labels[to] || to;
     resEl.textContent = format(out) + (category === 'temperature' ? (' ' + label) : (' ' + label));
