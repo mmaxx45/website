@@ -1,6 +1,6 @@
 // Simple Freedom Unit Converter
 (function(){
-  const units = {
+  const unitsBase = {
     length: {
       m: 1,
       cm: 0.01,
@@ -30,14 +30,44 @@
     }
   };
 
+  function units(category){
+    // return a map of units for the given category, injecting dynamic "burger" units
+    const map = Object.assign({}, unitsBase[category]);
+    // hardcoded special units
+    if(category === 'mass'){
+      // M1 Abrams mass ~ 61,000 kg
+      map['m1abrams'] = 61000000; // grams per M1 Abrams
+      // burger as mass (hardcoded)
+      map['burger'] = 150; // grams per burger (hardcoded)
+    }
+    if(category === 'length'){
+      // USS Nimitz-class length ~ 333 meters
+      map['carrier'] = 333; // meters per aircraft carrier
+      // American Bald Eagle wingspan ~ 2.3 m
+      map['american_eagle'] = 2.3; // meters per eagle wingspan
+      // American football field incl. end zones = 120 yards = 109.728 meters
+      map['football_field'] = 109.728; // meters per football field
+      // burger as length (hardcoded)
+      map['burger'] = 0.10; // meters per burger (10 cm hardcoded)
+    }
+    return map;
+  }
+
   function populateSelects(category){
+    const display = {
+      'm':'m','cm':'cm','in':'in','ft':'ft','yd':'yd','mi':'mi',
+      'g':'g','kg':'kg','oz':'oz','lb':'lb','m1abrams':'M1 Abrams', 'burger':'Burger',
+      'l':'l','ml':'ml','floz':'fl oz','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
+      'c':'°C','f':'°F','carrier':'Aircraft Carrier','american_eagle':'American Eagle','football_field':'Football Field'
+    };
     const from = document.getElementById('from');
     const to = document.getElementById('to');
     from.innerHTML = '';
     to.innerHTML = '';
-    const list = units[category];
+    const list = units(category);
+    // display mapping defined above
     Object.keys(list).forEach(k => {
-      const opt1 = document.createElement('option'); opt1.value = k; opt1.textContent = k;
+      const opt1 = document.createElement('option'); opt1.value = k; opt1.textContent = display[k] || k;
       const opt2 = opt1.cloneNode(true);
       from.appendChild(opt1);
       to.appendChild(opt2);
@@ -57,9 +87,9 @@
       if(from === 'f' && to === 'c') return (v - 32) * 5/9;
       return NaN;
     }
-    const map = units[category];
-    const baseFrom = map[from];
-    const baseTo = map[to];
+  const map = units(category);
+  const baseFrom = map[from];
+  const baseTo = map[to];
     if(baseFrom == null || baseTo == null) return NaN;
     const inBase = Number(value) * baseFrom; // value in base (m, g, l)
     const result = inBase / baseTo;
@@ -79,26 +109,17 @@
     const to = document.getElementById('to').value;
     const resEl = document.getElementById('result');
     let out = convert(category, value, from, to);
-    if(category === 'temperature'){
-      resEl.textContent = format(out) + ' ' + to.toUpperCase();
-    } else {
-      resEl.textContent = format(out) + ' ' + to;
-    }
+    // friendly unit label
+    const labels = {
+      'm':'m','cm':'cm','in':'in','ft':'ft','yd':'yd','mi':'mi',
+      'g':'g','kg':'kg','oz':'oz','lb':'lb','m1abrams':'M1 Abrams','burger':'Burger',
+      'l':'l','ml':'ml','floz':'fl oz','cup':'cup','pint':'pint','quart':'quart','gallon':'gallon',
+      'c':'°C','f':'°F','carrier':'Aircraft Carrier','american_eagle':'American Eagle','football_field':'Football Field'
+    };
+    const label = labels[to] || to;
+    resEl.textContent = format(out) + (category === 'temperature' ? (' ' + label) : (' ' + label));
 
-    // hamburger split if enabled and category is mass
-    const doBurger = document.getElementById('do-hamburger').checked;
-    const burgerResult = document.getElementById('burger-result');
-    if(doBurger && category === 'mass'){
-      const burgerWeight = Number(document.getElementById('burger-weight').value) || 150; // grams
-      // convert the input to grams
-      const grams = convert('mass', value, from, 'g');
-      const count = Math.floor(grams / burgerWeight);
-      burgerResult.textContent = `${count} Burger (~${burgerWeight} g)`;
-    } else if(doBurger){
-      burgerResult.textContent = 'Hamburger-Split nur für Massenwerte verfügbar';
-    } else {
-      burgerResult.textContent = '';
-    }
+    // no hamburger-split UI anymore; burger is available as a unit in selects
   }
 
   // wire up
@@ -106,7 +127,7 @@
     const cat = document.getElementById('category');
     populateSelects(cat.value);
     cat.addEventListener('change', function(){ populateSelects(cat.value); update(); });
-    ['value','from','to','do-hamburger','burger-weight'].forEach(id => {
+    ['value','from','to'].forEach(id => {
       const el = document.getElementById(id);
       if(!el) return;
       el.addEventListener('input', update);

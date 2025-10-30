@@ -37,9 +37,10 @@
     }
 
     // init: ensure UI matches current state (may have been set by early script)
+    // Apply stored or preferred theme even if there is no toggle button on this page
+    const initial = document.documentElement.classList.contains('dark') ? 'dark' : storedOrPref();
+    apply(initial);
     if(btn){
-        const initial = document.documentElement.classList.contains('dark') ? 'dark' : storedOrPref();
-        apply(initial);
         btn.addEventListener('click', toggle);
         btn.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }});
     }

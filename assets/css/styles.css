@@ -116,6 +116,15 @@ html.dark .github-link svg{ color: var(--fg); }
     cursor: pointer;
 }
 
+/* Disable hover/focus animation for cards with .no-hover */
+.card.no-hover:hover,
+.card.no-hover:focus-within{
+    transform: none;
+    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+    border-color: transparent;
+    cursor: default;
+}
+
 /* Aktiv/gedrückt - kleineres "Eindrücken" */
 .card:active {
     transform: translateY(-4px) scale(.997);
