@@ -91,7 +91,7 @@ function verify_license($key) {
     return $checksum === $computed_checksum;
 }
 ?>
-<p><?php
+<?php
 //echo generate_license();
 if ($generate == "ChangeMe") { //Change this value in production to a password.
     echo generate_license();
@@ -100,4 +100,4 @@ if ($generate == "ChangeMe") { //Change this value in production to a password.
 if ($key != null) {
 echo verify_license($key) ? 'true' : 'false';
 }
-?></p>
+?>
