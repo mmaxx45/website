@@ -97,5 +97,7 @@ if ($generate == "ChangeMe") { //Change this value in production to a password.
     echo generate_license();
 }
 
+if ($key != null) {
 echo verify_license($key) ? 'true' : 'false';
+}
 ?></p>
