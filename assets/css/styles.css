@@ -82,11 +82,25 @@ body{
 }
 
 /* GitHub icon link inside cards */
-.github-link{ color:var(--muted); display:inline-flex; align-items:center; }
-.github-link svg{ display:block; color:var(--muted); fill:currentColor; }
-.github-link:hover svg{ color:var(--accent); }
-/* Improve contrast for GitHub icon in dark mode */
-html.dark .github-link svg{ color: var(--fg); }
+.github-link{
+    /* Use a slightly lighter muted color in light mode so the icon isn't too dark */
+    color: #6b7280; /* slate-500-ish */
+    display:inline-flex;
+    align-items:center;
+}
+.github-link svg{
+    display:block;
+    /* inherit color from the link so the icon follows theme */
+    color: inherit;
+    fill: currentColor;
+}
+.github-link:hover{
+    color: var(--accent);
+}
+/* Ensure icon color adapts in dark mode by changing the link color */
+html.dark .github-link{
+    color: var(--fg);
+}
 
 /* Chevron in top-right of card */
 .chevron{
